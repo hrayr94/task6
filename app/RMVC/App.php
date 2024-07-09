@@ -11,7 +11,7 @@ class App
     {
         $requestMethod = ucfirst(strtolower($_SERVER['REQUEST_METHOD']));
         $requestName = 'getRoutes' . $requestMethod;
-        var_dump($requestMethod);
+//        var_dump($requestMethod);
 
         foreach (Route::$requestName() as $routeConfiguration) {
             $routeDispatcher = new RouteDispatcher($routeConfiguration);

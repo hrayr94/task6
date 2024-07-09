@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\RMVC\Route\Route;
 
-
-Route::get('/posts', [PostController::class, 'index']);
-Route::post('/posts', [PostController::class, 'store']);
-Route::get('posts/{post}', [PostController::class, 'show']);
+Route::get('/', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/create', [ProductController::class, 'create']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
+Route::post('/products/{id}', [ProductController::class, 'update']);
+Route::post('/products/{id}/delete', [ProductController::class, 'destroy']);
