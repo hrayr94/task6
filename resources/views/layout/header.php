@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My E-Commerce Store</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -26,9 +25,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/cart">Cart</a>
                 </li>
+                <li class="nav-item">
+                    <form action="/logout" method="post">
+                        <button type="submit" class="nav-link" style="color: #ffffff; background-color: transparent; border: none;">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>
 </header>
-
-<main class="container mt-5">

@@ -2,8 +2,6 @@
 
 namespace App\RMVC\View;
 
-use function PHPUnit\Framework\exactly;
-
 class View
 {
     private static string $path;

@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . "/../layout/header.php";
+
+//$prodModel = new App\Models\Product();
+//$product = $prodModel::find($_GET['id']);
 ?>
+
 <form action="/products/<?= $product->id ?>" method="POST" enctype="multipart/form-data" class="container mt-5">
     <input type="hidden" name="_method" value="PUT">
     <div class="form-group">

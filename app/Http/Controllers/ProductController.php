@@ -8,34 +8,31 @@ use App\RMVC\View\View;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(): string
     {
         $products = Product::all();
         return View::view('products.index', compact('products'));
     }
 
-    public function show($id)
+    public function show($id): string
     {
         $product = Product::find($id);
         return View::view('products.show', compact('product'));
     }
 
-    public function create()
+    public function create(): string
     {
         return View::view('products.create');
     }
 
     public function store()
     {
-        // Ensure POST request
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Create a new Product instance with form data
             $product = new Product();
             $product->name = $_POST['name'];
             $product->description = $_POST['description'];
             $product->price = $_POST['price'];
 
-            // Handle image upload
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
                 $image = $_FILES['image'];
                 $imagePath = basename($image['name']);
@@ -44,24 +41,17 @@ class ProductController extends Controller
                     $product->image = $imagePath;
                 } else {
                     echo "Failed to upload image.";
-                    // Handle error appropriately (e.g., redirect back to form)
                     return;
                 }
             } else {
-                // Handle case where no image is uploaded
                 echo "No image uploaded.";
-                // Handle error appropriately (e.g., redirect back to form)
                 return;
             }
 
-            // Save the product
             $product->save();
 
-            // Redirect after successful save
             Route::redirect('/products');
         } else {
-            // Handle cases where form submission method is not POST
-            // Redirect or show an error message as needed
         }
     }
 

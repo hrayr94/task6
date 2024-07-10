@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . "/../layout/header.php";
 
-if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
-$csrfToken = $_SESSION['csrf_token'];
+$prodModel = new App\Models\Product(); //
+$products = $prodModel::all(); // es mas@ chem karum arac $products-i anem.
 ?>
 <main class="container my-5">
         <div class="row">
@@ -13,7 +11,7 @@ $csrfToken = $_SESSION['csrf_token'];
             </div>
         </div>
     <div class="row">
-        <?php foreach ($products as $product): ?>
+        <?php foreach ($products as $product):  ?>
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm">
                     <img src="/images/<?= $product->image ?>" class="card-img-top product-img img-fluid" alt="Product Image" style="object-fit: cover; height: 300px;">
@@ -26,7 +24,6 @@ $csrfToken = $_SESSION['csrf_token'];
                             <a href="/products/<?= $product->id ?>/edit" class="btn btn-outline-secondary">Edit</a>
                             <form action="/products/<?= $product->id ?>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                                 <button type="submit" class="btn btn-outline-danger">Delete</button>
                             </form>
 
@@ -40,6 +37,4 @@ $csrfToken = $_SESSION['csrf_token'];
 
 <?php
 require_once __DIR__ . "/../layout/footer.php";
-
-unset($_SESSION['csrf_token']);
 ?>

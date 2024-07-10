@@ -1,5 +1,3 @@
-</main>
-
 <footer class="bg-dark text-light text-center py-3">
     &copy; <?= date('Y') ?> My E-Commerce Store. All rights reserved.
 </footer>

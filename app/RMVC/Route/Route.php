@@ -6,6 +6,7 @@ class Route
 {
     private static array $routesGet = [];
     private static array $routesPost = [];
+
     public static function getRoutesGet(): array
     {
         return self::$routesGet;
@@ -17,7 +18,7 @@ class Route
     }
 
 
-    public static function get(string $path, array $controller) : RouteConfiguration
+    public static function get(string $path, array $controller): RouteConfiguration
     {
         $routeConfiguration = new RouteConfiguration($path, $controller[0], $controller[1]);
         self::$routesGet[] = $routeConfiguration;
@@ -37,6 +38,4 @@ class Route
     {
         header('Location: ' . $url);
     }
-
-
 }
