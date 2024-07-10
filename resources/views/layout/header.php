@@ -8,10 +8,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!-- Custom styles -->
-    <style>
-        /* Add your custom styles here */
-    </style>
 </head>
 
 <body>
@@ -30,7 +26,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/cart">Cart</a>
                 </li>
-                <!-- Add more navigation links as needed -->
             </ul>
         </div>
     </nav>

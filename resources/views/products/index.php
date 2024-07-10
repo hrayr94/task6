@@ -1,5 +1,17 @@
+<?php
+require_once __DIR__ . "/../layout/header.php";
 
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrfToken = $_SESSION['csrf_token'];
+?>
 <main class="container my-5">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <a class="btn btn-outline-success" href="/products/create">Add Product</a>
+            </div>
+        </div>
     <div class="row">
         <?php foreach ($products as $product): ?>
             <div class="col-md-4 mb-4">
@@ -12,10 +24,12 @@
                         <div class="d-flex justify-content-between">
                             <a href="/products/<?= $product->id ?>" class="btn btn-outline-primary">View</a>
                             <a href="/products/<?= $product->id ?>/edit" class="btn btn-outline-secondary">Edit</a>
-                            <form action="/products/<?= $product->id ?>" method="POST">
+                            <form action="/products/<?= $product->id ?>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')">
                                 <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                                 <button type="submit" class="btn btn-outline-danger">Delete</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -23,3 +37,9 @@
         <?php endforeach; ?>
     </div>
 </main>
+
+<?php
+require_once __DIR__ . "/../layout/footer.php";
+
+unset($_SESSION['csrf_token']);
+?>
