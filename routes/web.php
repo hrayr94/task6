@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\RMVC\Route\Route;
 
@@ -16,3 +17,6 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
 Route::post('/products/{id}', [ProductController::class, 'update']);
 Route::post('/products/{id}/delete', [ProductController::class, 'destroy']);
+
+Route::get('/orders', [OrderController::class, 'index']);
+

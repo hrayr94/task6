@@ -23,7 +23,7 @@
                     <a class="nav-link" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart">Cart</a>
+                    <a class="nav-link" href="/orders">Orders</a>
                 </li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
