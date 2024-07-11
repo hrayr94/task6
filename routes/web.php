@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CartController;
 use App\RMVC\Route\Route;
 
 Route::get('/login', [AuthController::class, 'showLoginForm']);
@@ -18,5 +20,13 @@ Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
 Route::post('/products/{id}', [ProductController::class, 'update']);
 Route::post('/products/{id}/delete', [ProductController::class, 'destroy']);
 
+Route::get('/customer', [CustomerController::class, 'index']);
+
 Route::get('/orders', [OrderController::class, 'index']);
+Route::get('/orders/details/{customerId}', [OrderController::class, 'details']);
+
+
+Route::get('/cart', [CartController::class, 'index']);
+Route::post('/cart/add', [CartController::class, 'addToCart']);
+Route::post('/cart/remove', [CartController::class, 'removeFromCart']);
 

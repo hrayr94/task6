@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Database;
 use App\Models\Order;
+use App\Models\Customer;
 use App\RMVC\View\View;
 
 class OrderController extends Controller
@@ -22,5 +23,15 @@ class OrderController extends Controller
         return View::view('orders.index', ['orders' => $orders]);
     }
 
-    // Other methods as needed: create, store, edit, update, delete
+    public function details($customerId)
+    {
+        $customerModel = new Customer(Database::getInstance()->getConnection());
+        $customer = $customerModel->getById($customerId);
+
+        if ($customer) {
+            return View::view('orders.details', ['customer' => $customer]);
+        } else {
+            return "Customer not found";
+        }
+    }
 }

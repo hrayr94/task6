@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . "/../layout/header.php";
 
-$prodModel = new App\Models\Product(); //
-$products = $prodModel::all(); // es mas@ chem karum arac $products-i anem.
+$prodModel = new App\Models\Product();
+$products = $prodModel::all();
 ?>
 <main class="container my-5">
         <div class="row">

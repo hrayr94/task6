@@ -25,5 +25,17 @@ class Order
         }
     }
 
-    // Add more methods as needed, e.g., create, update, delete
+    public function getByCustomerId($customerId)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM orders WHERE customer_id = :customer_id");
+            $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error fetching orders by customer ID: " . $e->getMessage();
+            return [];
+        }
+    }
+
 }

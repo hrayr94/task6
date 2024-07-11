@@ -5,7 +5,6 @@ namespace App\RMVC\Route;
 class RouteDispatcher
 {
     private string $requestUri = "/";
-
     private array $paramMap = [];
     private array $paramRequestMap = [];
 
@@ -43,13 +42,11 @@ class RouteDispatcher
                 $this->paramMap[$paramKey] = preg_replace('/(^{)|(}$)/', '', $param);
             }
         }
-
     }
 
     private function makeRegexRequest()
     {
         $requestUriArray = explode("/", $this->requestUri);
-
 
         foreach ($this->paramMap as $paramKey => $param) {
             if (!isset($requestUriArray[$paramKey])) {
@@ -61,10 +58,6 @@ class RouteDispatcher
 
         $this->requestUri = implode('/', $requestUriArray);
         $this->prepareRegex();
-
-//        echo '<pre>';
-//        var_dump($this->paramRequestMap);
-//        echo '</pre>';
     }
 
     private function prepareRegex()
@@ -83,7 +76,8 @@ class RouteDispatcher
     {
         $ClassName = $this->routeConfiguration->controller;
         $action = $this->routeConfiguration->action;
-        print((new $ClassName())->$action(...$this->paramRequestMap));
+        // Ensure parameters are passed as array
+        print((new $ClassName())->$action(...array_values($this->paramRequestMap)));
         die();
     }
 }

@@ -1,6 +1,4 @@
-<?php
-require_once __DIR__ . "/../layout/header.php";
-?>
+<?php require_once __DIR__ . "/../layout/header.php"; ?>
 
 <div class="container">
     <h1>Orders</h1>
@@ -11,6 +9,7 @@ require_once __DIR__ . "/../layout/header.php";
             <th>Customer ID</th>
             <th>Total Price</th>
             <th>Created At</th>
+            <th>Actions</th> <!-- New column for actions -->
         </tr>
         </thead>
         <tbody>
@@ -20,11 +19,14 @@ require_once __DIR__ . "/../layout/header.php";
                 <td><?= $order['customer_id'] ?></td>
                 <td><?= $order['total_price'] ?></td>
                 <td><?= $order['created_at'] ?></td>
+                <td>
+                    <a href="/orders/details/<?= $order['customer_id'] ?>" class="btn btn-primary">Details</a>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 </div>
-</body>
 
+</body>
 </html>
